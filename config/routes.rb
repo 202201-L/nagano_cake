@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'products/new'
+    get 'products/index'
+    get 'products/show'
+    get 'products/edit'
+  end
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :end_users, controllers: {
