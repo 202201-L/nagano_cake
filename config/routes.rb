@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/new'
-    get 'genres/edit'
-  end
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :end_users, controllers: {
