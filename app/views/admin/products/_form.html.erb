@@ -17,13 +17,22 @@
 
 
   <div class="form-group">
-  <%= f.label :税抜価格 %>
-  <%= f.text_field :non_tax_price %>円
+    <%= f.label :税抜価格 %>
+    <%= f.text_field :non_tax_price %>円
+  </div>
+
+  <div class="form-group">
+    <%= f.label :販売ステータス %>
+    <% if @product.sale_status %>
+      <%= link_to '販売停止中', new_admin_product_path(product: {sale_status: false}), method: :put %>
+    <% else %>
+      <%= link_to '販売中', new_admin_product_path(product: {sale_status: true}), method: :put %>
+    <% end %>
   </div>
 
 
   <div class="form-group">
-    <%= f.submit '新規登録' %>
+    <%= f.submit %>
   </div>
 
 <% end %>
