@@ -15,12 +15,13 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 root :to => 'homes#top'
 get "homes/about" => "homes#about"
 
-
-resource :end_users, only: [:show, :unsubscribe, :withdraw, :edit, :update]
-resources :products, only: [:index, :show]
-resources :orders, only: [:index, :show, :comfirm, :complete, :new, :create]
-resources :cart_items, only: [:index, :create, :update, :destroy, :destroy_all]
-resources :deliveries, only: [:index, :edit, :update, :create, :destroy]
+scope module: :public do
+  resource :end_users, only: [:show, :unsubscribe, :withdraw, :edit, :update]
+  resources :products, only: [:index, :show]
+  resources :orders, only: [:index, :show, :comfirm, :complete, :new, :create]
+  resources :cart_items, only: [:index, :create, :update, :destroy, :destroy_all]
+  resources :deliveries, only: [:index, :edit, :update, :create, :destroy]
+end
 
 namespace :admin do
   resources :products, only: [:index, :new, :create, :show, :edit, :update]
