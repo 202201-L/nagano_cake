@@ -11,11 +11,6 @@ class Admin::ProductsController < ApplicationController
     redirect_to admin_product_path(@product.id)
   end
 
-  def update
-    @product = Product.find(params[:id])
-    @product.update(product_params)
-    redirect_to admin_product_path(@product)
-  end
 
   def index
     @products = Product.all
@@ -27,6 +22,12 @@ class Admin::ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    @product.update(product_params)
+    redirect_to admin_product_path(@product.id)
   end
 
   private
