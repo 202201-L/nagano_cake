@@ -2,7 +2,9 @@
 
 <pre>
 <h2>
+    会員ID          <%= @end_user.id %>
     氏名   　　　   <%= @end_user.last_name %><%= @end_user.first_name %>
+    フリガナ        <%= @end_user.last_name_kana %><%= @end_user.first_name_kana %>
     郵便番号        <%= @end_user.post_code %>
     住所            <%= @end_user.address %>
     電話番号        <%= @end_user.tel %>
