@@ -1,25 +1,31 @@
 <h1>商品詳細</h1>
+<%= image_tag @product.get_product_image("40x40") %>
+
   <div class="form-group">
-      <%= f.label :商品名 %>
-      <%= @product.name %>
+    <label>商品名：</label>
+    <%= @product.name %>
   </div>
-  
+
   <div class="form-group">
-      <%= f.label :商品説明 %>
-      <%= @product.name %>
+    <label>商品説明：</label>
+    <%= @product.body %>
   </div>
-  
+
   <div class="form-group">
-      <%= f.label :ジャンル %>
+    <label>ジャンル：</label>
+    <%= @product.genre.name %>
   </div>
-  
+
   <div class="form-group">
-      <%= f.label :税込価格(税抜価格) %>
-      <%= @product.non_tax_price %>
+    <label>税抜価格(税込価格)：</label>
+    <%= @product.non_tax_price %>
   </div>
-  
+
   <div class="form-group">
-      <%= f.label :販売ステータス %>
-      <%= @product.sale_status %>
+    <label>販売ステータス：</label>
+    <%= @product.sale_status ? '販売中止' : '販売中' %>
   </div>
-<%= f.submit '編集する' %>
+
+  <div class="form-group">
+    <%= link_to '編集する', edit_admin_product_path(@product) %>
+  </div>
