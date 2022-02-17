@@ -1,4 +1,4 @@
-<%= form_with model: product, url:'/products' do |f| %>
+<%= form_with model: product, url: admin_products_path, method: :post do |f| %>
 
   <div class="form-group">
   <%= f.label :商品画像 %>
@@ -15,19 +15,12 @@
     <%= f.text_area :body %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :ジャンル %>
-    <%= f.select :genre, [['ケーキ',1], ['焼き菓子',2], ['プリン',3], ['キャンディー',4]] %>
-  </div>
 
   <div class="form-group">
   <%= f.label :税抜価格 %>
   <%= f.text_field :non_tax_price %>円
   </div>
 
-  <div class="form-group">
-    <%= f.label :販売ステータス %>
-  </div>
 
   <div class="form-group">
     <%= f.submit '新規登録' %>
