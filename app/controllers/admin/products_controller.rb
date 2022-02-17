@@ -12,12 +12,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def index
-    if params[genre_id]
-      @genre = Genre.find(params[:genre_id])
-      @products = @genre.products
-    else
-      @products = Product.all
-    end
+    @products = Product.all
   end
 
   def show
