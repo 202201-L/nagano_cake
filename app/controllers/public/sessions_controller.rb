@@ -24,4 +24,18 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+protected
+
+  # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
+  def reject_user
+    @end_user = EndUser.find_by(params[:email][:password])
+    if @end_user
+      if @end_user.valid_password?(params[:email][:password]) && (@end_user.is_deleted == false)
+        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+        redirect_to new_end_user_registration
+      else
+        flash[:notice] = "項目を入力してください"
+      end
+    end
+  end
 end
