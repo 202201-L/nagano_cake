@@ -1,4 +1,4 @@
-<%= form_with model: product, url: admin_products_path, method: :post do |f| %>
+<%= form_with model: product, local:true do |f| %>
 
   <div class="form-group">
   <%= f.label :商品画像 %>
@@ -15,6 +15,11 @@
     <%= f.text_area :body %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :ジャンル %>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name, :include_blank => true %>
+  </div>
+
 
   <div class="form-group">
     <%= f.label :税抜価格 %>
@@ -23,11 +28,10 @@
 
   <div class="form-group">
     <%= f.label :販売ステータス %>
-    <% if @product.sale_status %>
-      <%= link_to '販売停止中', new_admin_product_path(product: {sale_status: false}), method: :put %>
-    <% else %>
-      <%= link_to '販売中', new_admin_product_path(product: {sale_status: true}), method: :put %>
-    <% end %>
+    <%= f.radio_button :sale_status, :false %>
+    <%= f.label :sale_status, "販売中" %>
+    <%= f.radio_button :sale_status, :true %>
+    <%= f.label :sale_status, "販売停止中" %>
   </div>
 
 
