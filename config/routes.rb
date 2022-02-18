@@ -16,7 +16,7 @@ root :to => 'homes#top'
 get "homes/about" => "homes#about"
 
 scope module: :public do
-  resources :end_users, only: [:show, :unsubscribe, :withdraw, :edit, :update]
+  resources :end_users, only: [:show, :edit, :update]
   resources :products, only: [:index, :show]
   resources :orders, only: [:index, :show, :comfirm, :complete, :new, :create]
   resources :cart_items, only: [:index, :create, :update, :destroy, :destroy_all]

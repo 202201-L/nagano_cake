@@ -1,0 +1,13 @@
+<%= render 'admin/genres/index', genres: @genres %>
+
+<%= image_tag @product.get_product_image, size: '400x300' %>
+
+<strong><%= @product.name %></strong>
+<%= @product.body %>
+<strong>¥ <%= @product.non_tax_price %></strong><small>(税込)</small>
+
+<%= form_with model: @cart_items do |f| %>
+  <%= f.hidden_field :product_id, value: @product.id %>
+  <%= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+  <%= f.submit "カートに入れる" %>
+<% end %>
