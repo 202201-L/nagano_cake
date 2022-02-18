@@ -1,4 +1,8 @@
 <h1>マイページ</h1>
+
+<h2>登録情報</h2><%= link_to 'Edit', edit_end_user_path(@end_user)%>
+
+<p>
 <table border="1" width="400">
     <tr>
       <td>氏名</td>
@@ -24,7 +28,7 @@
       <td>メールアドレス</td>
       <td><%= @end_user.email %></td>
     </tr>
-    <tr>
-      <td>会員ステータス</td>
-      <td><%= @end_user.is_delete %></td>
-    </tr>
+  </table>
+  </p>
+   <p><%= link_to '配送先', deliveries_path(@end_user)%></p>
+   <p><%= link_to '注文履歴', orders_path(@end_user)%></p>
