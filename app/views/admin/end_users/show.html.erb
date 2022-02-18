@@ -1,0 +1,18 @@
+<h1>会員詳細</h1>
+
+<pre>
+<h2>
+    会員ID          <%= @end_user.id %>
+    氏名   　　　   <%= @end_user.last_name %><%= @end_user.first_name %>
+    フリガナ        <%= @end_user.last_name_kana %><%= @end_user.first_name_kana %>
+    郵便番号        <%= @end_user.post_code %>
+    住所            <%= @end_user.address %>
+    電話番号        <%= @end_user.tel %>
+    メールアドレス  <%= @end_user.email %>
+    会員ステータス  <%= @end_user.is_delete %>
+</h2>
+
+</pre>
+
+<td><%= link_to 'Edit', edit_admin_end_user_path(@end_user)%>
+<td><%= link_to '注文履歴', admin_orders_path(@end_user)%>
