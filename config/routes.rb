@@ -14,6 +14,9 @@ devise_for :admin, skip: [:registrations, :passwords], controllers: {
 
 root :to => 'homes#top'
 get "homes/about" => "homes#about"
+get 'unsubscribe/:id' => 'homes#unsubscribe', as: 'confirm_unsubscribe'
+patch ':id/withdraw/:id' => 'homes#withdraw', as: 'withdraw_end_user'
+put 'withdraw/:id' => 'endusers#withdraw'
 
 scope module: :public do
   resources :end_users, only: [:show, :edit, :update]
