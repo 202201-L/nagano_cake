@@ -9,4 +9,8 @@ class Product < ApplicationRecord
   def get_product_image
     product_image.attached? ? product_image : 'no_image.jpg'
   end
+  
+  def in_tax_price
+    (non_tax_price * 1.1).floor
+  end
 end

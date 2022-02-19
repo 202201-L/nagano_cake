@@ -2,6 +2,7 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_items = current_end_user.cart_items.all
+    @total_price = @cart_items.inject(0) {|sum, product| sum + product.sub_total }
   end
 
   def create
@@ -20,6 +21,11 @@ class Public::CartItemsController < ApplicationController
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
+    redirect_back(fallback_location: root_path)
+  end
+
+  def destroy_all
+    CartItem.destroy_all
     redirect_back(fallback_location: root_path)
   end
 
