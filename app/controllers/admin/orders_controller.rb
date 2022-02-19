@@ -4,6 +4,13 @@ class Admin::OrdersController < ApplicationController
   end
   def show
     @order = Order.find(params[:id])
-    @end_user = EndUser.find(params[:id])
+    @end_user = @order.end_user
+  end
+  def update
+    @order  =  
+  
+
+  def order_params
+    params.require(:order).permit(:address, :created_at, :payment_method, :order_statuss)
   end
 end
