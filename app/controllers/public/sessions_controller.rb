@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+rai# frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
   before_action :end_user_state, only: [:create]
