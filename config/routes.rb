@@ -22,7 +22,9 @@ scope module: :public do
   resources :end_users, only: [:show, :edit, :update]
   resources :products, only: [:index, :show]
   resources :orders, only: [:index, :show, :comfirm, :complete, :new, :create]
-  resources :cart_items, only: [:index, :create, :update, :destroy, :destroy_all]
+  resources :cart_items, only: [:index, :create, :update, :destroy,] do
+    delete 'destroy_all'
+  end
   resources :deliveries, only: [:index, :edit, :update, :create, :destroy]
 end
 
