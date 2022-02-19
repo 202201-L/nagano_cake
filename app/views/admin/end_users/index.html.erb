@@ -19,7 +19,7 @@
           <% end%>
         </td>
         <td><%= end_user.email %></td>
-        <td><%= end_user.is_delete %></td>
+        <td><%= end_user.is_delete ? '退会中' : '有効' %></td>
       </tr>
     <% end %>
   </tbody>
