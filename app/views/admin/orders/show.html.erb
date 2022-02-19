@@ -1,0 +1,26 @@
+
+<h1>注文履歴詳細</h1>
+
+<table  width="400">
+    <tr>
+      <td>購入者</td>
+      <td><%= @end_user.last_name %><%= @end_user.first_name %></td>
+    </tr>
+    <tr>
+      <td>注文日</td>
+      <td><%= @order.created_at %></td>
+    </tr>
+    <tr>
+      <td>配送先</td>
+      <td><%= @order.address %></td>
+    </tr>
+    <tr>
+      <td>支払方法</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>注文ステータス</td>
+      <td>
+      </td>
+    </tr>
+  </table>
