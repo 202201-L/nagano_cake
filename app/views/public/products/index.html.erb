@@ -1,13 +1,26 @@
-<h2>商品一覧 <small>(全<%= @products.count %>件)</small></h2>
-
-<%= render 'admin/genres/index', genres: @genres %>
-
-
-<% @products.each do |product| %>
-  <%= link_to product_path(product) do %>
-    <%= image_tag product.get_product_image, size: "400x300" %>
-  <% end %>
-  <%= product.name %>
-  ¥<%= product.non_tax_price %>
-<% end %>
-<%= paginate @products %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'admin/genres/index', genres: @genres %>
+    </div>
+    <div class="col-md-9">
+      <h2>商品一覧 <small>(全<%= @products.count %>件)</small></h2>
+      <div class="container">
+        <div class="row">
+          <%  @products.each do |product| %>
+          <div>
+            <%= link_to product_path(product) do %>
+              <%= image_tag product.get_product_image, size: "200x150" %><br>
+            <% end %>
+            <strong><%= product.name %></strong><br>
+            <strong>¥<%= product.non_tax_price %></strong>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div>
+      <%= paginate @products %>
+    </div>
+  </div>
+</div>
