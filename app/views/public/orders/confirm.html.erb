@@ -23,12 +23,22 @@
   </tr>
   <tr>
     <td>商品合計</td>
-    <td><%= @order.total_price%></td>
+    <td><%= @total %></td>
   </tr>
    <tr>
     <td>請求金額</td>
-    <td>44</td>
+    <td><%= @order.postage + @total %></td>
   </tr>
 </table><br>
 <h3>お支払方法</h3>
-<%= @order.payment_method%>
+<%= @order.payment_method_i18n %>
+<h3>お届け先</h3>
+<%= @order.address %>
+<br>
+<%= form_with model: @order, url: orders_path, method: :post do |f| %>
+<%= f.hidden_field :name %>
+<%= f.hidden_field :payment_method %>
+<%= f.hidden_field :address %>
+<%= f.hidden_field :total_price, value: @total %>
+<%= f.submit "注文を確定する" %>
+<% end %>

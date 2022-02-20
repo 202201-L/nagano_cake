@@ -20,6 +20,7 @@ put 'withdraw/:id' => 'end_users#withdraw'
 
 scope module: :public do
   post 'orders/confirm' => 'orders#confirm'
+  post 'orders/complete' => 'orders#complete'
   resources :end_users, only: [:show, :edit, :update]
   resources :products, only: [:index, :show]
   resources :orders, only: [:index, :show,:new, :create]
