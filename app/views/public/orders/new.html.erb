@@ -6,16 +6,26 @@
 <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
 <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
 <p>お届け先</p>
-<%= f.radio_button :address_number, 1 %> <!-- address_number と定義して1～3の番号を check に送ります -->
-<%= f.label :address_number_1, "ご自身の住所" %>
-<p><%= current_end_user.address %></p>
+<%= f.radio_button :address_number, 1 %>
+<%= f.label :address_number_1, "ご自身の住所" %><br>
+<%= current_end_user.address %><br>
 
 <%= f.radio_button :address_number, 2 %>
-<%= f.label :address_number_2, "登録先の住所" %>
-<p></p>
+<%= f.label :address_number_2, "登録先の住所" %><br>
+<%= f.collection_select :delivery_id, Delivery.all, :id, :full_address %><br>
 
 <%= f.radio_button :address_number, 3 %>
-<%= f.label :address_number_2, "新しいお届け先" %>
+<%= f.label :address_number_2, "新しいお届け先" %><br>
+
+<%= f.label :post_code, "郵便番号" %>
+<%= f.text_field :post_code %><br>
+
+<%= f.label :address_name, "宛名" %>
+<%= f.text_field :address_name %><br>
+
+<%= f.label :address, "住所" %>
+<%= f.text_field :address %><br>
+
 
 <p><%= f.submit "確認画面へ進む" %></p>
 <% end %>
