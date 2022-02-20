@@ -19,7 +19,7 @@
         <td><%= link_to product.name, admin_product_path(product.id) %></td>
         <td><%= product.non_tax_price %></td>
         <td><%= product.genre.name %></td>
-        <td><%= product.sale_status %></td>
+        <td><%= product.sale_status ? '販売停止中' : '販売中' %></td>
       </tr>
       <% end %>
     </tbody>
