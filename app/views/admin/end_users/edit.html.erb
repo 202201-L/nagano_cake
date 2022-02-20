@@ -10,7 +10,7 @@
         <%= f.label :名 %>
         <%= f.text_field :first_name, class: "form-control first_name" %>
       </div>
-      
+
        <div class="form-group">
         <%= f.label :姓カナ%>
         <%= f.text_field :last_name_kana, class: "form-control last_name_kana" %>
@@ -19,7 +19,7 @@
         <%= f.label :名カナ %>
         <%= f.text_field :first_name_kana, class: "form-control first_name_kana" %>
       </div>
-      
+
      <div class="form-group">
         <%= f.label :郵便番号%>
         <%= f.text_field :post_code, class: "form-control-file post_code" %>
@@ -29,9 +29,25 @@
         <%= f.text_area :address, class: "form-control introduction" %>
       </div>
       <div class="form-group">
-        <%= f.label :メールアドレス%>
-        <%= f.text_area :email, class: "form-control email" %>
+        <%= f.label :電話番号%>
+        <%= f.text_field :tel, class: "form-control email" %>
       </div>
+      <div class="form-group">
+        <%= f.label :メールアドレス%>
+        <%= f.text_field :email, class: "form-control email" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :会員ステータス%>
+        <%= f.text_field :email, class: "form-control email" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :販売ステータス %>
+        <%= f.radio_button :is_delete, :false %>
+        <%= f.label :is_delete, "有効" %>
+        <%= f.radio_button :is_delete, :true %>
+        <%= f.label :is_delete, "退会" %>
+      </div>
+
       <div class="form-group">
         <%= f.submit class: 'btn btn-secondary' %>
       </div>

@@ -9,7 +9,7 @@
     住所            <%= @end_user.address %>
     電話番号        <%= @end_user.tel %>
     メールアドレス  <%= @end_user.email %>
-    会員ステータス  <%= @end_user.is_delete %>
+    会員ステータス  <%= @end_user.is_delete ? '退会' : '有効' %>
 </h2>
 
 </pre>
