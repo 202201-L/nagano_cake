@@ -9,8 +9,12 @@ class Public::DeliveriesController < ApplicationController
   def create
     @delivery = Delivery.new(delivery_params)
     @delivery.end_user_id = current_end_user.id
-    @delivery.save
-    redirect_to deliveries_path
+    if @delivery.save
+      redirect_to deliveries_path
+    else
+      @deliveries = current_end_user.deliveries
+      render "index"
+    end
   end
 
   def edit
@@ -19,8 +23,11 @@ class Public::DeliveriesController < ApplicationController
 
   def update
     @delivery = Delivery.find(params[:id])
-    @delivery.update(delivery_params)
-    redirect_to deliveries_path
+    if @delivery.update(delivery_params)
+      redirect_to deliveries_path
+    else
+      render "edit"
+    end
   end
 
   def destroy

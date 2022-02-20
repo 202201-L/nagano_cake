@@ -1,5 +1,14 @@
 <h2>配送先編集</h2>
 <%= form_with model: @delivery, url: delivery_path(@delivery), method: :patch do |f| %>
+  <% if @delivery.errors.any? %>
+  <%= @delivery.errors.count %>error
+    <ul>
+      <% @delivery.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <label>郵便番号(ハイフンなし)</label>
   <%= f.text_field :post_code %><br>
   <label>住所</label>
