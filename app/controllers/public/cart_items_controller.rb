@@ -8,7 +8,6 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart_item = CartItem.new(cart_item_params)
-    @cart_item.amount += params[:amount].to_i
     @cart_item.end_user_id = current_end_user.id
     if @cart_item.save
       redirect_to cart_items_path, notice: "カートに追加されました"
