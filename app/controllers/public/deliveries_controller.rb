@@ -2,15 +2,14 @@ class Public::DeliveriesController < ApplicationController
   before_action :authenticate_end_user!
 
   def index
-    @deliveries = Delivery.all
     @delivery = Delivery.new
+    @deliveries = current_end_user.deliveries
   end
 
   def create
     @delivery = Delivery.new(delivery_params)
     @delivery.end_user_id = current_end_user.id
     @delivery.save
-    # redirect_back(fallback_location: root_path)
     redirect_to deliveries_path
   end
 
@@ -36,4 +35,5 @@ class Public::DeliveriesController < ApplicationController
   def delivery_params
     params.require(:delivery).permit(:address_name, :address, :post_code)
   end
+
 end

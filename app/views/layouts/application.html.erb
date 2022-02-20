@@ -18,6 +18,9 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+          <% if end_user_signed_in? %>
+            ようこそ、<%= current_end_user.last_name %><%= current_end_user.first_name %>さん！
+          <% end %>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
@@ -97,6 +100,7 @@
         </div>
       </div>
     </header>
+    <p id="notice"><%= notice %></p>
     <%= yield %>
   </body>
 </html>
