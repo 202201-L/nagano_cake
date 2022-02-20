@@ -1,21 +1,32 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-3">
-        <%= render 'admin/genres/index', genres: @genres, class: 'text text-align-center' %>
+      <%= render 'admin/genres/index', genres: @genres, class: 'text text-align-center' %>
     </div>
     <div class="col-lg-9">
       <div class="card text-center text-dark">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg card-img" width="100%" height="270" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Card image"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/></svg>
+        <%= image_tag 'top.jpg', size: '830x300' %>
         <div class="card-img-overlay">
           <p class="card-text">
+            <strong>
             ようこそ、ながのcakeへ！<br>
             このサイトは、ケーキ販売のECサイトになります。<br>
             会員でない方も商品の閲覧はできますが、<br>
             購入には会員登録が必要になります。
+            </strong>
           </p>
         </div>
       </div>
-      <h2>新着商品</h2>
+      <h2>
+        <strong>新着商品</strong>
+      </h2>
+      <div class="container">
+        <% @products.each do |product| %>
+          <%= image_tag product.get_product_image, size: "40x40" %><br>
+          <%= product.name %><br>
+          <%= product.non_tax_price %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
