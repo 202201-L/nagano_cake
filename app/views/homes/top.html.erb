@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-md-3">
       <%= render 'admin/genres/index', genres: @genres, class: 'text text-align-center' %>
     </div>
-    <div class="col-lg-9">
+    <div class="col-md-9">
       <div class="card text-center text-dark">
         <%= image_tag 'top.jpg', size: '830x300' %>
         <div class="card-img-overlay">
@@ -22,7 +22,7 @@
       </h2>
       <div class="container">
         <% @products.each do |product| %>
-          <%= image_tag product.get_product_image, size: "40x40" %><br>
+          <%= image_tag product.get_product_image, size: "200x150" %><br>
           <%= product.name %><br>
           <%= product.non_tax_price %>
         <% end %>
