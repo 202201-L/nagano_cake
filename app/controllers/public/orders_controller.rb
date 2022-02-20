@@ -9,6 +9,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @cart_items = current_end_user.cart_items
+    @order = Order.new(order_params)
+    @order.postage = 800
 
   end
 
@@ -23,4 +26,11 @@ class Public::OrdersController < ApplicationController
   def complete
 
   end
+
+  private
+    def   order_params
+    params.require(:order).permit(:name, :address, :total_price, :postage, :payment_method)
+    end
+
+
 end

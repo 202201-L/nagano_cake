@@ -19,7 +19,7 @@ patch ':id/withdraw/:id' => 'homes#withdraw', as: 'withdraw_end_user'
 put 'withdraw/:id' => 'end_users#withdraw'
 
 scope module: :public do
-  get 'orders/confirm' => 'orders#confirm'
+  post 'orders/confirm' => 'orders#confirm'
   resources :end_users, only: [:show, :edit, :update]
   resources :products, only: [:index, :show]
   resources :orders, only: [:index, :show,:new, :create]
