@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_end_user!
 
   def index
     @cart_items = current_end_user.cart_items.all
@@ -8,8 +9,11 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.end_user_id = current_end_user.id
-    @cart_item.save
-    redirect_to cart_items_path
+    if @cart_item.save
+      redirect_to cart_items_path, notice: "カートに追加されました"
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def update
