@@ -4,7 +4,10 @@ class Product < ApplicationRecord
   belongs_to :genre
 
   has_one_attached :product_image
-
+  
+  validates :name, presence: :true
+  validates :body, presence: :true
+  validates :non_tax_price, presence: :true
 
   def get_product_image
     product_image.attached? ? product_image : 'no_image.jpg'

@@ -8,6 +8,7 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart_item = CartItem.new(cart_item_params)
+    @cart_item.amount += params[:amount].to_i
     @cart_item.end_user_id = current_end_user.id
     if @cart_item.save
       redirect_to cart_items_path, notice: "カートに追加されました"
@@ -24,13 +25,21 @@ class Public::CartItemsController < ApplicationController
 
   def destroy
     @cart_item = CartItem.find(params[:id])
-    @cart_item.destroy
-    redirect_back(fallback_location: root_path)
+    if @cart_item.destroy
+      flash[:notice] = "カート内商品を削除しました"
+      redirect_back(fallback_location: root_path)
+    else
+      render "index"
+    end
   end
 
   def destroy_all
-    CartItem.destroy_all
-    redirect_back(fallback_location: root_path)
+    if CartItem.destroy_all
+      flash[:notice] = "カート内商品を全て削除しました"
+      redirect_back(fallback_location: root_path)
+    else
+      render "index"
+    end
   end
 
 

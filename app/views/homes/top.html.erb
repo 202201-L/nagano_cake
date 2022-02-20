@@ -22,11 +22,12 @@
       </h2>
       <div class="container">
         <% @products.each do |product| %>
-          <%= image_tag product.get_product_image, size: "40x40" %><br>
+          <%= image_tag product.get_product_image, size: "200x150" %><br>
           <%= product.name %><br>
           <%= product.non_tax_price %>
         <% end %>
       </div>
+      <%= link_to '全ての商品を見る', products_path %>
     </div>
   </div>
 </div>
