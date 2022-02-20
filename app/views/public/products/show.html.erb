@@ -1,14 +1,18 @@
 <%= render 'admin/genres/index', genres: @genres %>
 
-<%= image_tag @product.get_product_image, size: '400x300' %>
+  <%= image_tag @product.get_product_image, size: '400x300' %>
 
-<strong><%= @product.name %></strong>
-<%= @product.body %>
-<strong>¥ <%= @product.non_tax_price %></strong><small>(税込)</small>
+  <strong><%= @product.name %></strong>
+  <%= @product.body %>
+  <strong>¥ <%= @product.non_tax_price %></strong><small>(税込)</small>
 
 
-<%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-  <%= f.hidden_field :product_id, value: @product.id %>
-  <%= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数選択" %>
-  <%= f.submit "カートに入れる" %>
+<% if @product.sale_status == false %>
+  <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+    <%= f.hidden_field :product_id, value: @product.id %>
+    <%= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+    <%= f.submit "カートに入れる" %>
+  <% end %>
+<% else %>
+  <p>申し訳ございません。現在品切れ中です。</p>
 <% end %>
