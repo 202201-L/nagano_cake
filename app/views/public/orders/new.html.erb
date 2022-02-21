@@ -12,7 +12,7 @@
 
 <%= f.radio_button :address_number, 2 %>
 <%= f.label :address_number_2, "登録先の住所" %><br>
-<%= f.collection_select :delivery_id, Delivery.all, :id, :full_address %><br>
+<%= f.collection_select :delivery_id, current_end_user.deliveries.all, :id, :full_address %><br>
 
 <%= f.radio_button :address_number, 3 %>
 <%= f.label :address_number_3, "新しいお届け先" %><br>
