@@ -20,14 +20,14 @@
 <table border="1" width="200">
     <tr>
       <td>商品合計</td>
-      <td>test</td>
+      <td><%= @total%></td>
     </tr>
       <td>配送料</td>
-      <td>test</td>
+      <td><%= @order.postage %></td>
     </tr>
     <tr>
       <td>ご請求額</td>
-      <td>test</td>
+      <td><%= @order.postage + @total %></td>
     </tr>
 </table><br>
 <h3>注文内容</h3>
@@ -38,6 +38,12 @@
       <td>個数</td>
       <td>小計</td>
     </tr>
+    <% @order_detail.each do |order_detail| %>
     <tr>
+      <td><%= order_detail.product.name %></td>
+      <td><%= order_detail.intax_price %></td>
+      <td><%= order_detail.amount %></td>
+      <td><%= order_detail.intax_price * order_detail.amount %></td>
     </tr>
+    <% end %>
 </table><br>
