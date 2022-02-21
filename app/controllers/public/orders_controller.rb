@@ -2,6 +2,7 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    
   end
 
   def create
@@ -48,7 +49,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-     @orders = Order.page(params[:page])
+     @orders_all = Order.page(params[:page])
+     @orders = current_end_user.orders
 
   end
 
