@@ -37,11 +37,7 @@
         <%= f.text_field :email, class: "form-control email" %>
       </div>
       <div class="form-group">
-        <%= f.label :会員ステータス%>
-        <%= f.text_field :email, class: "form-control email" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :販売ステータス %>
+        <%= f.label :会員ステータス %>
         <%= f.radio_button :is_delete, :false %>
         <%= f.label :is_delete, "有効" %>
         <%= f.radio_button :is_delete, :true %>
