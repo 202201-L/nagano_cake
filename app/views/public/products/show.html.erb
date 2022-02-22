@@ -1,18 +1,28 @@
-<%= render 'admin/genres/index', genres: @genres %>
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'admin/genres/index', genres: @genres %>
+    </div>
 
-  <%= image_tag @product.get_product_image, size: '400x300' %>
+    <div class="col-md-9 d-flex justify-content-around">
+          <%= image_tag @product.get_product_image, size: '350x250'%>
 
-  <strong><%= @product.name %></strong>
-  <%= @product.body %>
-  <strong>¥ <%= @product.non_tax_price %></strong><small>(税込)</small>
+          <div class="d-inline-block">
+            <h4><strong><%= @product.name %></strong></h4>
+            <p class="mb-5"><%= @product.body %></p>
+            <h5 class="d-inline-block mb-4"><strong>¥ <%= @product.in_tax_price %></strong></h5><small> (税込)</small>
 
+            <% if @product.sale_status == false %>
+              <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+                <%= f.hidden_field :product_id, value: @product.id %>
+                <%= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数選択" %>
+                <%= f.submit "カートに入れる", class:"btn btn-success btn-sm ml-4" %>
+              <% end %>
+            <% else %>
+              <p>申し訳ございません。現在品切れ中です。</p>
+            <% end %>
 
-<% if @product.sale_status == false %>
-  <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-    <%= f.hidden_field :product_id, value: @product.id %>
-    <%= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数選択" %>
-    <%= f.submit "カートに入れる" %>
-  <% end %>
-<% else %>
-  <p>申し訳ございません。現在品切れ中です。</p>
-<% end %>
+          </div>
+    </div>
+  </div>
+</div>
