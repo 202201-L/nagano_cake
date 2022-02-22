@@ -9,5 +9,6 @@ class Public::ProductsController < ApplicationController
     @cart_item = CartItem.new
     @product = Product.find(params[:id])
     @genres = Genre.all
+    @in_tax_price = @product.non_tax_price * 1.1
   end
 end
