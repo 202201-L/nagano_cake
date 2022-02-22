@@ -1,36 +1,38 @@
-<div class="container">
+<div class="container mt-4 mb-4">
   <h3 class="bg-light">注文履歴詳細</h3>
 
-  <table>
-    <tr>
-      <th>購入者</th>
-      <td><%= @order.name %></td>
-    </tr>
-    <tr>
-      <th>注文日</th>
-      <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
-    </tr>
-    <tr>
-      <th>配送先</th>
-      <td>
-        <%= "〒" + @order.post_code.to_s.insert(3, "-") + " " + @order.address %><br>
-        <%= @order.name %>
-      </td>
-    </tr>
-    <tr>
-      <th>支払い方法</th>
-      <td><%= @order.payment_method_i18n %></td>
-    </tr>
-    <tr>
-      <th>注文ステータス</th>
-      <td>
-        <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
-          <%= f.select :order_status, Order.order_statuses.keys %>
-          <%= f.submit "更新", class:"btn btn-success btn-sm ml-2" %>
-        <% end %>
-      </td>
-    </tr>
-  </table>
+  <div class="col-md-6">
+    <table class="table table-borderless">
+      <tr>
+        <th>購入者</th>
+        <td><%= @order.name %></td>
+      </tr>
+      <tr>
+        <th>注文日</th>
+        <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+      </tr>
+      <tr>
+        <th>配送先</th>
+        <td>
+          <%= "〒" + @order.post_code.to_s.insert(3, "-") + " " + @order.address %><br>
+          <%= @order.name %>
+        </td>
+      </tr>
+      <tr>
+        <th>支払い方法</th>
+        <td><%= @order.payment_method_i18n %></td>
+      </tr>
+      <tr>
+        <th>注文ステータス</th>
+        <td>
+          <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
+            <%= f.select :order_status, Order.order_statuses.keys %>
+            <%= f.submit "更新", class:"btn btn-success btn-sm ml-2" %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
 
     <div class="row">
       <div class="col-md-8">
@@ -63,8 +65,8 @@
         </table>
       </div>
 
-      <div class="col-md-3">
-        <table>
+      <div class="col-md-3 d-flex align-items-end">
+        <table class="table table-borderless">
           <tr>
             <th>商品合計</th>
             <td><%= @total %>円</td>
