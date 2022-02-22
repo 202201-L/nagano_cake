@@ -1,18 +1,49 @@
-<h1>会員詳細</h1>
+<div class="container">
+    <h3 class="mt-4">会員詳細</h3>
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-borderless">
+                <tr>
+                    <th>会員ID</th>
+                    <td><%= @end_user.id %></td>
+                </tr>
+                <tr>
+                    <th>氏名</th>
+                    <td><%= @end_user.last_name %><%= @end_user.first_name %></td>
+                </tr>
+                <tr>
+                    <th>フリガナ</th>
+                    <td><%= @end_user.last_name_kana %><%= @end_user.first_name_kana %></td>
+                </tr>
+                <tr>
+                    <th>郵便番号</th>
+                    <td><%= @end_user.post_code %></td>
+                </tr>
+                <tr>
+                    <th>住所</th>
+                    <td><%= @end_user.address %></td>
+                </tr>
+                <tr>
+                    <th>電話番号</th>
+                    <td><%= @end_user.tel %></td>
+                </tr>
+                <tr>
+                    <th>メールアドレス</th>
+                    <td><%= @end_user.email %></td>
+                </tr>
+                <tr>
+                    <th>ステータス</th>
+                    <td><%= @end_user.is_delete ? '退会' : '有効' %></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <%= link_to '編集する', edit_admin_end_user_path(@end_user), class:"btn btn-success btn-sm mr-5"%>
+                        <%= link_to '注文履歴一覧をみる', admin_orders_path(@end_user), class:"btn btn-primary btn-sm"%>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-<pre>
-<h2>
-    会員ID          <%= @end_user.id %>
-    氏名   　　　   <%= @end_user.last_name %><%= @end_user.first_name %>
-    フリガナ        <%= @end_user.last_name_kana %><%= @end_user.first_name_kana %>
-    郵便番号        <%= @end_user.post_code %>
-    住所            <%= @end_user.address %>
-    電話番号        <%= @end_user.tel %>
-    メールアドレス  <%= @end_user.email %>
-    会員ステータス  <%= @end_user.is_delete ? '退会' : '有効' %>
-</h2>
-
-</pre>
-
-<%= link_to 'Edit', edit_admin_end_user_path(@end_user)%>
-<%= link_to '注文履歴', admin_orders_path(@end_user)%>
+    </div>
+</div>
