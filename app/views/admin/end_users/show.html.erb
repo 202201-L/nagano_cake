@@ -1,18 +1,42 @@
-<h1>会員詳細</h1>
-
-<pre>
-<h2>
-    会員ID          <%= @end_user.id %>
-    氏名   　　　   <%= @end_user.last_name %><%= @end_user.first_name %>
-    フリガナ        <%= @end_user.last_name_kana %><%= @end_user.first_name_kana %>
-    郵便番号        <%= @end_user.post_code %>
-    住所            <%= @end_user.address %>
-    電話番号        <%= @end_user.tel %>
-    メールアドレス  <%= @end_user.email %>
-    会員ステータス  <%= @end_user.is_delete ? '退会' : '有効' %>
-</h2>
-
-</pre>
-
-<%= link_to 'Edit', edit_admin_end_user_path(@end_user)%>
-<%= link_to '注文履歴', admin_orders_path(@end_user)%>
+<div class="container">
+    <div class="row">
+    <h3><%= @end_user.last_name %><%= @end_user.first_name %>さんの会員詳細</h3>
+    </div><br>
+    <table width="600">
+        <tr>
+            <td>会員ID</td>
+            <td><%= @end_user.id %></td>
+        </tr>
+        <tr>
+            <td>氏名</td>
+            <td><%= @end_user.last_name %><%= @end_user.first_name %></td>
+        </tr>
+        <tr>
+            <td>フリガナ</td>
+            <td><%= @end_user.last_name_kana %><%= @end_user.first_name_kana %></td>
+        </tr>
+        <tr>
+            <td>郵便番号</td>
+            <td><%= @end_user.post_code %></td>
+        </tr>
+        <tr>
+            <td>住所</td>
+            <td><%= @end_user.address %></td>
+        </tr>
+        <tr>
+            <td>電話番号</td>
+            <td><%= @end_user.tel %></td>
+        </tr>
+        <tr>
+            <td>メールアドレス</td>
+            <td><%= @end_user.email %></td>
+        </tr>
+        <tr>
+            <td>会員ステータス</td>
+            <td><%= @end_user.is_delete ? '退会' : '有効' %></td>
+        </tr>
+    </table><br>
+        <%= link_to '編集する', edit_admin_end_user_path(@end_user), class: "btn btn-success mr-5"%>
+        <%= link_to '注文履歴一覧を見る', admin_orders_path(@end_user), class: "btn btn-primary"%>
+    </div>
+</div>
