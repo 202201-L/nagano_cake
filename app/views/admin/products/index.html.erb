@@ -23,7 +23,11 @@
         <td><%= link_to product.name, admin_product_path(product.id), class:"text-dark" %></td>
         <td><%= product.non_tax_price %></td>
         <td><%= product.genre.name %></td>
-        <td><%= product.sale_status ? '販売停止中' : '販売中' %></td>
+        <% if product.sale_status %>
+        <td class = "text-secondary"><strong>販売停止中</strong></td>
+        <% else %>
+        <td class ="text-success"><strong>販売中</strong></td>
+        <% end %>
       </tr>
       <% end %>
     </tbody>
