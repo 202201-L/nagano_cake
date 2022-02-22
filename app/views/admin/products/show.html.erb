@@ -1,3 +1,6 @@
+<div class="container">
+  
+</div>
 <h1>商品詳細</h1>
 <%= image_tag @product.get_product_image %>
 
@@ -17,7 +20,7 @@
   </div>
 
   <div class="form-group">
-    <label>税抜価格(税込価格)：</label>
+    <label>税込価格(税抜価格)：</label>
     <%= @product.non_tax_price %>
   </div>
 

@@ -1,9 +1,13 @@
-<h1>商品一覧</h1>
-<%= link_to '商品新規追加', new_admin_product_path %>
+<div class="container mt-4">
+  <div class="d-flex justify-content-between">
+    <h3 class="mb-4 d-inline-block">商品一覧</h3>
+    <%= link_to new_admin_product_path do %>
+      <h3 class="d-inline-block text-dark"><i class="fa-solid fa-plus"></i></h3>
+    <% end %>
+  </div>
 
-<table>
-  <thead>
-    <thed>
+  <table class="table table-borderless">
+    <thead class="thead-light">
       <tr>
         <th>商品ID</th>
         <th>商品名</th>
@@ -11,18 +15,23 @@
         <th>ジャンル</th>
         <th>ステータス</th>
       </tr>
-    </thed>
+    </thead>
     <tbody>
       <% @products.each do |product| %>
       <tr>
         <td><%= product.id %></td>
-        <td><%= link_to product.name, admin_product_path(product.id) %></td>
+        <td><%= link_to product.name, admin_product_path(product.id), class:"text-dark" %></td>
         <td><%= product.non_tax_price %></td>
         <td><%= product.genre.name %></td>
         <td><%= product.sale_status ? '販売停止中' : '販売中' %></td>
       </tr>
       <% end %>
     </tbody>
-  </thead>
-</table>
+  </table>
+  <div class="d-flex justify-content-center mb-3">
+    <%= paginate @products %>
+  </div>
+</div>
+
+
 
