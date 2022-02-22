@@ -2,7 +2,7 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    
+
   end
 
   def create
@@ -53,6 +53,7 @@ class Public::OrdersController < ApplicationController
 
      @orders_all = Order.page(params[:page])
      @orders = current_end_user.orders
+
 
 
   end
