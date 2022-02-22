@@ -27,7 +27,10 @@
         <div class="row">
           <% @products.each do |product| %>
             <div class="col-md-3">
-              <%= image_tag product.get_product_image, size: "200x150" %></br>
+              <%= link_to product_path(product) do %>
+                <%= image_tag product.get_product_image, size: "200x150"%>
+              <% end %>
+              </br>
               <%= product.name %></br>
               <%= product.non_tax_price %>
             </div>
