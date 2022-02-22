@@ -21,6 +21,7 @@ class Admin::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @in_tax_price = @product.non_tax_price * 1.1
   end
 
   def edit
