@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'admin/genres/index', genres: @genres, class: 'text text-align-center' %>
+    </div>
+      <div class="col-md-9">
+        <div class="card text-center text-dark">
+          <%= image_tag 'top.jpg', size: '830x300' %>
+          <div class="card-img-overlay">
+            <p class="card">
+              <strong>
+              ようこそ、ながのcakeへ！<br>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要になります。
+              </strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row p-2">
+      <div class="col-md-9 offset-3">
+        <h2 class="m-2">
+          <strong>新着商品</strong>
+        </h2>
+        <div class="row">
+          <% @products.each do |product| %>
+            <div class="col-md-3">
+              <%= image_tag product.get_product_image, size: "200x150" %></br>
+              <%= product.name %></br>
+              <%= product.non_tax_price %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2 offset-10 p-3">
+      <%= link_to '全ての商品を見る', products_path %>
+    </div>
+</div>
