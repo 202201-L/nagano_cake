@@ -5,10 +5,9 @@
     </div>
     <div class="col-md-9">
       <h2>商品一覧 <small>(全<%= @products.count %>件)</small></h2>
-      <div class="container">
         <div class="row">
           <%  @products.each do |product| %>
-          <div>
+          <div class="border border-dark p-1">
             <%= link_to product_path(product) do %>
               <%= image_tag product.get_product_image, size: "200x150" %><br>
             <% end %>
@@ -17,10 +16,9 @@
           </div>
           <% end %>
         </div>
-      </div>
     </div>
-    <div>
-      <%= paginate @products %>
-    </div>
+  </div>
+  <div class="col-md-2 offset-10 p-3">
+    <%= paginate @products %>
   </div>
 </div>

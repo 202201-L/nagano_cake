@@ -46,20 +46,25 @@ class Public::OrdersController < ApplicationController
 
 
 
+
   end
 
   def index
+
      @orders_all = Order.page(params[:page])
      @orders = current_end_user.orders
+
 
   end
 
   def show
+
     @order = Order.find(params[:id])
     @order.postage =800
     @order_detail = @order.order_details.all
     @total = @order_detail.inject(0) { |sum, item| sum + item.sub_total }
   end
+
 
   def complete
 

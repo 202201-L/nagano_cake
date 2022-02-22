@@ -10,17 +10,19 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
+  <body class="border border-dark">
+    <header class="border border-dark p-1">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand mr-5" href="/"><span>ながのcake</span></a>
+          <a class="navbar-brand mr-5, btn btn-outline-secondary" href="/"><strong>ながのcake</strong></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+          <h5 class="col-md-3 offset-1">
           <% if end_user_signed_in? %>
-            ようこそ、<%= current_end_user.last_name %><%= current_end_user.first_name %>さん！
+            <strong>ようこそ、<%= current_end_user.last_name %><%= current_end_user.first_name %>さん！</strong>
           <% end %>
+          </h5>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
@@ -58,7 +60,7 @@
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to destroy_end_user_session_path, method: :delete, class: 'btn btn-light mr-3' do %>
+                    <%= link_to destroy_end_user_session_path, method: :delete, class: 'btn btn-light' do %>
                       <i class="fas fa-sign-out-alt" ::before></i> ログアウト
                     <% end %>
                   </li>
@@ -79,7 +81,7 @@
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to new_end_user_session_path, class: 'btn btn-light mr-3' do %>
+                    <%= link_to new_end_user_session_path, class: 'btn btn-light' do %>
                       <i class="fas fa-sign-in-alt" ::before></i> ログイン
                     <% end %>
                   </li>
@@ -91,7 +93,7 @@
           </div>
         </div>
       </nav>
-      <div class="input-group input-group-sm md-3">
+      <div class="input-group input-group-sm md-3 col-md-3 offset-9 p-2">
         <div class="input-group-prepend">
           <%= text_field :keyword, value: @keyword %>
           <%= link_to root_path, class: "btn btn-outline-secondary btn-block root_path" do %>
