@@ -1,6 +1,11 @@
-<h1>マイページ</h1>
-
-<h2>登録情報</h2><%= link_to 'Edit', edit_end_user_path(@end_user)%>
+<div class="container">
+  <div class="row">
+    <h3>マイページ</h3>
+  </div>
+<div class="row">
+  <h4>登録情報</h4>
+  <%= link_to '編集する', edit_end_user_path(@end_user), class: "btn btn-success ml-5"%>
+</div>
 
 <p>
 <table border="1" width="400">
@@ -9,7 +14,7 @@
       <td><%= @end_user.last_name %><%= @end_user.first_name %></td>
     </tr>
     <tr>
-      <td>フリガナ</td>
+      <td>カナ</td>
       <td><%= @end_user.last_name_kana %><%= @end_user.first_name_kana %></td>
     </tr>
     <tr>
@@ -30,5 +35,14 @@
     </tr>
   </table>
   </p>
-   <p><%= link_to '配送先', deliveries_path%></p>
-   <p><%= link_to '注文履歴', orders_path(@end_user)%></p>
+  <div class="row m-4">
+   <p>配送先</p>
+     <%= link_to '一覧を見る', deliveries_path, class: "col-md-2 offset-1 btn btn-primary" %>
+  </div>
+  <div class="row m-2">
+   <p>注文履歴</p>
+     <%= link_to '一覧を見る', orders_path(@end_user), class: "col-md-2 offset-1 btn btn-primary" %>
+
+  </div>
+
+</div>
