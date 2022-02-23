@@ -36,7 +36,7 @@
         </tr>
          <tr>
           <td class="bg-light">請求金額</td>
-          <td><%= @order.postage + @total %></td>
+          <td><%= @total_price.to_s(:delimited) %></td>
         </tr>
       </table>
     </div>
