@@ -21,7 +21,7 @@
       <tr>
         <td><%= product.id %></td>
         <td><%= link_to product.name, admin_product_path(product.id), class:"text-dark" %></td>
-        <td><%= product.non_tax_price %></td>
+        <td><%= product.non_tax_price.to_s(:delimited) %></td>
         <td><%= product.genre.name %></td>
         <% if product.sale_status %>
         <td class = "text-secondary"><strong>販売停止中</strong></td>

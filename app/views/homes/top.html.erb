@@ -5,7 +5,10 @@
     </div>
     <div class="col-md-9">
       <div class="card">
-        <%= image_tag 'top.jpg', size: '830x300' %>
+        <div class="image">
+          <%= image_tag 'top.jpg', size: '830x300' %>
+          
+        </div>
         <div class="card-img-overlay d-flex align-items-center justify-content-center">
           <h5 class="card-text text-left text-dark">
             <strong>
@@ -27,7 +30,7 @@
                 <%= image_tag product.get_product_image, size: "200x130"%>
               <% end %>
               <p class="mt-3"><strong><%= product.name %></strong></p>
-              <p><strong>¥<%= product.non_tax_price %></strong></p>
+              <p><strong>¥<%= product.non_tax_price.to_s(:delimited) %></strong></p>
           </div>
         <% end %>
       </div>

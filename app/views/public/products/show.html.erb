@@ -10,7 +10,7 @@
       <div class="d-inline-block">
         <h4><strong><%= @product.name %></strong></h4>
         <p class="mb-5"><%= @product.body %></p>
-        <h5 class="d-inline-block mb-4"><strong>¥ <%= @product.in_tax_price %></strong></h5><small> (税込)</small>
+        <h5 class="d-inline-block mb-4"><strong>¥ <%= @product.in_tax_price.to_s(:delimited) %></strong></h5><small> (税込)</small>
 
         <% if @product.sale_status == false %>
           <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
