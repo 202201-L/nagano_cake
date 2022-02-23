@@ -4,7 +4,7 @@
       <%= render 'admin/genres/index', genres: @genres %>
     </div>
     <div class="col-md-9">
-      <h2 class="mb-3">商品一覧</h2>
+      <h2 class="mb-3"><%= @genre.name %>一覧</h2>
         <div class="row">
           <%  @genre.products.each do |product| %>
           <div class="col-md-3">
