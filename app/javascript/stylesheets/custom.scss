@@ -2,7 +2,6 @@ body {
   font-family: 'Hannotate SC','Yu Gothic UI',sans-serif;
 }
 
-
 .image {
   opacity: 0.5;
 }
@@ -40,4 +39,28 @@ body {
 
 header {
   background-color: #FFDBC9;
+}
+
+footer {
+  width: 100%;
+  margin: 0 auto;
+  height: 110px;
+  background-color: #FFDBC9;
+  text-align: center;
+}
+
+.footer-height {
+  padding-top: 10px;
+}
+
+.info {
+  font-size: 40px;
+}
+
+.info-list {
+  margin-right: 20px;
+}
+
+.soldout {
+  font-size: 20px;
 }
