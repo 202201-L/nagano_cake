@@ -8,26 +8,14 @@
     <%= render "public/shared/error_messages", resource: resource %>
     <%= flash[:notice]%>
     <div class="form-group row">
-      <%= f.label :name, '名前', class: "col-md-2" %>
-      <div class="col-md-3 offset-1">
-      <%= f.label :last_name, '(性)', class: "col-md-3" %>
-      <%= f.text_field :last_name, class: "form-control" %>
-      </div>
-      <div class="col-md-3">
-      <%= f.label :first_name, '(名)', class: "col-md-3" %>
-      <%= f.text_field :first_name, class: "form-control" %>
-      </div>
+      <%= f.label :name, '名前', class: "col-md-3" %>
+        <%= f.text_field :last_name, placeholder: "性", class: "form-control col-md-3 offset-1" %>
+        <%= f.text_field :first_name, placeholder: "名", class: "form-control col-md-3 ml-2" %>
     </div>
     <div class="form-group row">
       <%= f.label :name, 'フリガナ', class: "col-md-3" %>
-      <div class="col-md-4">
-        <%= f.label :last_name_kana, '(セイ)', class: "text-right col-md-3" %>
-        <%= f.text_field :last_name_kana, class: "form-control" %>
-      </div>
-      <div class="col-md-4">
-        <%= f.label :first_name, '(メイ)', class: "text-right col-md-3" %>
-        <%= f.text_field :first_name_kana, class: "form-control" %>
-      </div>
+        <%= f.text_field :last_name_kana, placeholder: "セイ", class: "form-control col-md-3 offset-1" %>
+        <%= f.text_field :first_name_kana, placeholder: "メイ", class: "form-control col-md-3 ml-2" %>
     </div>
     <div class="form-group row">
       <%= f.label :email, 'メールアドレス', class: "col-md-3" %>

@@ -13,7 +13,7 @@
 
     <div class="form-group row pb-3">
       <%= f.label :password, "パスワード", class: "col-md-2 offset-1" %>
-      <%= f.password_field :password, autocomplete: "current-password", class: "form-control col-md-6" %>
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: "６文字以上", class: "form-control col-md-6" %>
     </div>
       <%= f.submit "ログイン", class: "btn btn-primary w-25 col-md-3 offset-3" %>
   <% end %>
