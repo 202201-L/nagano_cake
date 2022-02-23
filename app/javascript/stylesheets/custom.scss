@@ -1,5 +1,5 @@
 body {
-  font-family: 'Hannotate SC','Yu Gothic UI',sans-serif;
+  font-family: 'Yomogi', cursive;
 }
 
 .image {
@@ -63,4 +63,36 @@ footer {
 
 .soldout {
   font-size: 20px;
+}
+
+.genre {
+  margin: 2em 0;
+  border: solid 1px #000;
+}
+
+.genre .genre-search {
+  background: #FFDBC9;
+  padding: 3px;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  border-bottom: solid 1px #000;
+}
+
+.genre-text {
+  padding: 15px 20px;
+}
+
+.genre-text a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.1em;
+  transition: .3s;
+}
+
+.genre-text a:hover {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.2em;
+  transition: .3s;
 }
