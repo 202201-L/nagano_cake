@@ -1,3 +1,8 @@
+body {
+  font-family: 'Hannotate SC','Yu Gothic UI',sans-serif;
+}
+
+
 .image {
   opacity: 0.5;
 }
@@ -31,4 +36,8 @@
   height: 55px;
   border-radius: 55%;
   transition: 0.3s;
+}
+
+header {
+  background-color: #FFDBC9;
 }
