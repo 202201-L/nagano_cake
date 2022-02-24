@@ -1,16 +1,10 @@
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th class="text-center">
-        ジャンル検索
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <td>
-      <% genres.each do |genre| %>
+<div class="genre">
+  <div class="genre-search">ジャンル検索</div>
+  <p class="genre-text">
+    <% genres.each do |genre| %>
+      <%= link_to genre_path(genre.id) do %>
         <%= genre.name %><br>
       <% end %>
-    </td>
-  </tbody>
-</table>
+    <% end %>
+  </p>
+</div>

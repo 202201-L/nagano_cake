@@ -1,16 +1,16 @@
 <div class="container mt-5 mb-5">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2">
       <%= render 'admin/genres/index', genres: @genres %>
     </div>
 
-    <div class="col-md-9 d-flex justify-content-around">
+    <div class="col-md-10 d-flex justify-content-around">
       <%= image_tag @product.get_product_image, size: '350x250'%>
 
       <div class="d-inline-block">
         <h4><strong><%= @product.name %></strong></h4>
         <p class="mb-5"><%= @product.body %></p>
-        <h5 class="d-inline-block mb-4"><strong>¥ <%= @product.in_tax_price %></strong></h5><small> (税込)</small>
+        <h5 class="d-inline-block mb-4"><strong>¥ <%= @product.in_tax_price.to_s(:delimited) %></strong></h5><small> (税込)</small>
 
         <% if @product.sale_status == false %>
           <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
@@ -19,7 +19,7 @@
             <%= f.submit "カートに入れる", class:"btn btn-success btn-sm ml-4" %>
           <% end %>
         <% else %>
-          <p>申し訳ございません。現在品切れ中です。</p>
+          <p class="text-danger font-weight-bold soldout">申し訳ございません。現在品切れ中です。</p>
         <% end %>
       </div>
     </div>

@@ -31,6 +31,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.postage = 800
     @total = @cart_items.inject(0) { |sum, item| sum + item.sub_total }
+    @total_price = @order.postage + @total
 
     if params[:order][:address_number] == "1"
       @order.post_code = current_end_user.post_code
@@ -52,7 +53,7 @@ class Public::OrdersController < ApplicationController
   def index
 
      @orders_all = Order.page(params[:page])
-     @orders = current_end_user.orders
+     @orders = current_end_user.orders.order(created_at: :desc)
 
 
 
@@ -64,6 +65,7 @@ class Public::OrdersController < ApplicationController
     @order.postage =800
     @order_detail = @order.order_details.all
     @total = @order_detail.inject(0) { |sum, item| sum + item.sub_total }
+    @total_price = @order.postage + @total
   end
 
 

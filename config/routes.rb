@@ -28,6 +28,7 @@ scope module: :public do
     delete 'destroy_all'
   end
   resources :deliveries, only: [:index, :edit, :update, :create, :destroy]
+  resources :genres, only: [:show]
 end
 
 namespace :admin do

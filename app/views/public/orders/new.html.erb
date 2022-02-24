@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5 mb-5">
   <div class="row m-2">
     <h3 class="col-md-11 offset-1">
       <strong>注文情報入力</strong>
@@ -29,8 +29,8 @@
     <div class="custom-control custom-radio mt-2">
       <%= f.radio_button :address_number, 2 %>
       <%= f.label :address_number_2, "登録済住所から選択" %>
-      <div class="form-group row">
-      <%= f.collection_select :delivery_id, current_end_user.deliveries.all, :id, :full_address, class: "form-select col-md-8 offset-1" %>
+      <div class="form-group row ml-4">
+        <%= f.collection_select :delivery_id, current_end_user.deliveries.all, :id, :full_address, class: "form-control" %>
       </div>
     </div>
       <div class="custom-control custom-radio">
@@ -39,7 +39,7 @@
     </div>
     <div class="form-group row">
       <%= f.label :post_code, "郵便番号(ハイフンなし)", class: "col-md-3 offset-1" %>
-      <%= f.text_field :post_code, class: "form-control col-md-3" %>
+      <%= f.text_field :post_code, placeholder: "〒", class: "form-control col-md-3" %>
     </div>
     <div class="form-group row">
       <%= f.label :address, "住所", class: "col-md-3 offset-1" %>
@@ -49,7 +49,7 @@
       <%= f.label :address_name, "宛名", class: "col-md-3 offset-1" %>
       <%= f.text_field :name, class: "form-control col-md-3" %>
     </div>
-    <div class="row m-3">
+    <div class="row mb-3">
       <%= f.submit "確認画面へ進む", class: "btn btn-primary col-md-3 offset-4" %>
     </div>
   <% end %>

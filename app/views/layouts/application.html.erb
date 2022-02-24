@@ -8,80 +8,83 @@
 
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yomogi&display=swap" rel="stylesheet">
   </head>
 
-  <body class="border border-dark">
+  <body>
     <header class="border border-dark p-1">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand mr-5, btn btn-outline-secondary" href="/"><strong>ながのcake</strong></a>
+          <a class="navbar-brand mr-5" href="/"><%= image_tag 'logo.png', size: "170x60" %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <h5 class="col-md-3 offset-1">
-          <% if end_user_signed_in? %>
-            <strong>ようこそ、<%= current_end_user.last_name %><%= current_end_user.first_name %>さん！</strong>
-          <% end %>
-          </h5>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <p class="navbar-nav offset-1">
+            <% if end_user_signed_in? %>
+              ようこそ、<%= current_end_user.last_name %><%= current_end_user.first_name %>さん！
+            <% end %>
+          </p>
+          <div class="collapse navbar-collapse header-item" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if admin_signed_in? %>
               <li>
-                <%= link_to '商品一覧', admin_products_path, class: 'btn btn-light mr-3' %>
+                <%= link_to '商品一覧', admin_products_path, class: 'text-dark mr-3' %>
               </li>
               <li>
-                <%= link_to '会員一覧', admin_end_users_path, class: 'btn btn-light mr-3' %>
+                <%= link_to '会員一覧', admin_end_users_path, class: 'text-dark mr-3' %>
               </li>
               <li>
-                <%= link_to '注文履歴一覧', admin_orders_path, class: 'btn btn-light mr-3' %>
+                <%= link_to '注文履歴一覧', admin_orders_path, class: 'text-dark mr-3' %>
               </li>
               <li>
-                <%= link_to 'ジャンル一覧', admin_genres_path, class: 'btn btn-light mr-3' %>
+                <%= link_to 'ジャンル一覧', admin_genres_path, class: 'text-dark mr-3' %>
               </li>
               <li>
-                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'btn btn-light' %>
+                <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'text-dark mr-3' %>
               </li>
             <% else %>
               <ul class="navbar-nav ml-auto">
                 <% if end_user_signed_in? %>
                   <li>
-                    <%= link_to end_user_path(current_end_user), class: 'btn btn-light mr-3' do %>
+                    <%= link_to end_user_path(current_end_user), class: 'text-dark mr-3' do %>
                       <i class="fa-solid fa-address-card"></i> マイページ
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to products_path, class: 'btn btn-light mr-3' do %>
+                    <%= link_to products_path, class: 'text-dark mr-3' do %>
                       <i class="fas fa-book-open"></i> 商品一覧
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to cart_items_path, class: 'btn btn-light mr-3' do %>
+                    <%= link_to cart_items_path, class: 'text-dark mr-3' do %>
                       <i class="fa-solid fa-cart-shopping"></i> カート
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to destroy_end_user_session_path, method: :delete, class: 'btn btn-light' do %>
+                    <%= link_to destroy_end_user_session_path, method: :delete, class:"text-dark" do %>
                       <i class="fas fa-sign-out-alt" ::before></i> ログアウト
                     <% end %>
                   </li>
                 <% else %>
                   <li>
-                    <%= link_to homes_about_path, class: 'btn btn-light mr-3' do %>
+                    <%= link_to homes_about_path, class: 'text-dark mr-3' do %>
                       <i class="fas fa-link" ::before></i> About
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to products_path, class: 'btn btn-light mr-3' do %>
+                    <%= link_to products_path, class:'text-dark mr-3' do %>
                       <i class="fas fa-book-open"></i> 商品一覧
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to new_end_user_registration_path, class: 'btn btn-light mr-3' do %>
+                    <%= link_to new_end_user_registration_path, class: 'text-dark mr-3' do %>
                       <i class="fas fa-user-plus" ::before></i> 新規登録
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to new_end_user_session_path, class: 'btn btn-light' do %>
+                    <%= link_to new_end_user_session_path, class:"text-dark" do %>
                       <i class="fas fa-sign-in-alt" ::before></i> ログイン
                     <% end %>
                   </li>
@@ -90,18 +93,22 @@
             <% end %>
             </ul>
           </div>
-          </div>
         </div>
       </nav>
-      <div class="input-group input-group-sm md-3 col-md-3 offset-9 p-2">
-        <div class="input-group-prepend">
-          <%= text_field :keyword, value: @keyword %>
-          <%= link_to root_path, class: "btn btn-outline-secondary btn-block root_path" do %>
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <% end %>
-        </div>
-      </div>
     </header>
     <%= yield %>
+
+    <footer class="mt-5">
+      <div class="footer-height">
+        <div class="info">
+          <i class="info-list fa-brands fa-twitter"></i>
+          <i class="info-list fa-brands fa-instagram"></i>
+          <i class="info-list fa-solid fa-envelope"></i>
+        </div>
+        <div class="footer-text">
+          <p>© Copyright 2022 Lorem Ipsum All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
